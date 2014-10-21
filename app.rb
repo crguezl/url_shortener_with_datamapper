@@ -6,6 +6,10 @@ require 'haml'
 require 'uri'
 require 'pp'
 #require 'socket'
+require 'omniauth-oauth2'      
+require 'omniauth-google-oauth2'
+require 'pry'
+require 'erubis' 
 require 'data_mapper'
 
 DataMapper.setup( :default, ENV['DATABASE_URL'] || 
