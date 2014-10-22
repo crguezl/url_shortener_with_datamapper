@@ -2,9 +2,9 @@ html,body {
         height:100%;           
 }
 h1 {
-        font-family: Arial,sans-serif
+        font-family: Verdana;
         font-size:80px;
-        color:#01DF3A;         
+        color: blue;         
 }     
 .lead {
         color:#01DF3A;
@@ -15,11 +15,11 @@ h1 {
         width: 100%;
         min-height:20%;        
         background-color:#6E6E6E;
-        color:#eee;; 
+        color:green;; 
         overflow:hidden;
 }   
 .container-full a {  
-        color:#efefef;;
+        color:yellow;;
         text-decoration:none;
 } 
 .v-center {
