@@ -6,10 +6,29 @@ require 'haml'
 require 'uri'
 require 'pp'
 #require 'socket'
+require 'omniauth-oauth2'      
+require 'omniauth-google-oauth2'
+require 'pry'
+require 'erubis' 
 require 'data_mapper'
 
-DataMapper.setup( :default, ENV['DATABASE_URL'] || 
+use OmniAuth::Builder do       
+  config = YAML.load_file 'config/config.yml'
+  provider :google_oauth2, config['identifier'], config['secret']
+end
+  
+enable :sessions               
+set :session_secret, '*&(^#234a)'
+
+configure :development do
+	DataMapper.setup( :default, ENV['DATABASE_URL'] || 
                             "sqlite3://#{Dir.pwd}/my_shortened_urls.db" )
+end
+
+configure :production do   #heroku
+	DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
 DataMapper::Logger.new($stdout, :debug)
 DataMapper::Model.raise_on_save_failure = true 
 
